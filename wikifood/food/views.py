@@ -49,6 +49,8 @@ def indexSearch(request, index, page):
 				cakeList = subcake
 			else:
 				cakeList = [val for val in subcake if val in cakeList]
+				if (len(cakeList) == 0):
+					break
 		else:
 			cakeList = []
 			break
@@ -69,11 +71,13 @@ def indexSearch(request, index, page):
 	'''	
 	for item in index:
 		if (item in List_of_rice_dishes_dict.dict):
-			subrice = List_of_rice_dishes_dict.dict[item]
+			subrice = List_of_rice_dishes_dict.dict[item]		
 			if (len(riceList) == 0):
 				riceList = subrice
 			else:
 				riceList = [val for val in subrice if val in riceList]
+				if (len(riceList) == 0):
+					break
 		else:
 			riceList = []
 			break
