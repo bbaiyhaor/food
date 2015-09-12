@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>bibiworld</title>
+<style>
+
+body {
+    width: 600px;
+    margin: 40px auto;
+    font-family: 'trebuchet MS', 'Lucida sans', Arial;
+    font-size: 14px;
+    color: #444;
+}
+
+table {
+    *border-collapse: collapse; /* IE7 and lower */
+    border-spacing: 0;
+    width: 100%;    
+}
+
+.bordered {
+    border: solid #ccc 1px;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
+    -webkit-box-shadow: 0 1px 1px #ccc; 
+    -moz-box-shadow: 0 1px 1px #ccc; 
+    box-shadow: 0 1px 1px #ccc;         
+}
+
+.bordered tr:hover {
+    background: #fbf8e9;
+    -o-transition: all 0.1s ease-in-out;
+    -webkit-transition: all 0.1s ease-in-out;
+    -moz-transition: all 0.1s ease-in-out;
+    -ms-transition: all 0.1s ease-in-out;
+    transition: all 0.1s ease-in-out;     
+}    
+    
+.bordered td, .bordered th {
+    border-left: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;    
+}
+
+.bordered th {
+    background-color: #dce9f9;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#ebf3fc), to(#dce9f9));
+    background-image: -webkit-linear-gradient(top, #ebf3fc, #dce9f9);
+    background-image:    -moz-linear-gradient(top, #ebf3fc, #dce9f9);
+    background-image:     -ms-linear-gradient(top, #ebf3fc, #dce9f9);
+    background-image:      -o-linear-gradient(top, #ebf3fc, #dce9f9);
+    background-image:         linear-gradient(top, #ebf3fc, #dce9f9);
+    -webkit-box-shadow: 0 1px 0 rgba(255,255,255,.8) inset; 
+    -moz-box-shadow:0 1px 0 rgba(255,255,255,.8) inset;  
+    box-shadow: 0 1px 0 rgba(255,255,255,.8) inset;        
+    border-top: none;
+    text-shadow: 0 1px 0 rgba(255,255,255,.5); 
+}
+
+.bordered td:first-child, .bordered th:first-child {
+    border-left: none;
+}
+
+.bordered th:first-child {
+    -moz-border-radius: 6px 0 0 0;
+    -webkit-border-radius: 6px 0 0 0;
+    border-radius: 6px 0 0 0;
+}
+
+.bordered th:last-child {
+    -moz-border-radius: 0 6px 0 0;
+    -webkit-border-radius: 0 6px 0 0;
+    border-radius: 0 6px 0 0;
+}
+
+.bordered th:only-child{
+    -moz-border-radius: 6px 6px 0 0;
+    -webkit-border-radius: 6px 6px 0 0;
+    border-radius: 6px 6px 0 0;
+}
+
+.bordered tr:last-child td:first-child {
+    -moz-border-radius: 0 0 0 6px;
+    -webkit-border-radius: 0 0 0 6px;
+    border-radius: 0 0 0 6px;
+}
+
+.bordered tr:last-child td:last-child {
+    -moz-border-radius: 0 0 6px 0;
+    -webkit-border-radius: 0 0 6px 0;
+    border-radius: 0 0 6px 0;
+}
+
+
+
+/*----------------------*/
+
+.zebra td, .zebra th {
+    padding: 10px;
+    border-bottom: 1px solid #f2f2f2;    
+}
+
+.zebra tbody tr:nth-child(even) {
+    background: #f5f5f5;
+    -webkit-box-shadow: 0 1px 0 rgba(255,255,255,.8) inset; 
+    -moz-box-shadow:0 1px 0 rgba(255,255,255,.8) inset;  
+    box-shadow: 0 1px 0 rgba(255,255,255,.8) inset;        
+}
+
+.zebra th {
+    text-align: left;
+    text-shadow: 0 1px 0 rgba(255,255,255,.5); 
+    border-bottom: 1px solid #ccc;
+    background-color: #eee;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#f5f5f5), to(#eee));
+    background-image: -webkit-linear-gradient(top, #f5f5f5, #eee);
+    background-image:    -moz-linear-gradient(top, #f5f5f5, #eee);
+    background-image:     -ms-linear-gradient(top, #f5f5f5, #eee);
+    background-image:      -o-linear-gradient(top, #f5f5f5, #eee); 
+    background-image:         linear-gradient(top, #f5f5f5, #eee);
+}
+
+.zebra th:first-child {
+    -moz-border-radius: 6px 0 0 0;
+    -webkit-border-radius: 6px 0 0 0;
+    border-radius: 6px 0 0 0;  
+}
+
+.zebra th:last-child {
+    -moz-border-radius: 0 6px 0 0;
+    -webkit-border-radius: 0 6px 0 0;
+    border-radius: 0 6px 0 0;
+}
+
+.zebra th:only-child{
+    -moz-border-radius: 6px 6px 0 0;
+    -webkit-border-radius: 6px 6px 0 0;
+    border-radius: 6px 6px 0 0;
+}
+
+.zebra tfoot td {
+    border-bottom: 0;
+    border-top: 1px solid #fff;
+    background-color: #f1f1f1;  
+}
+
+.zebra tfoot td:first-child {
+    -moz-border-radius: 0 0 0 6px;
+    -webkit-border-radius: 0 0 0 6px;
+    border-radius: 0 0 0 6px;
+}
+
+.zebra tfoot td:last-child {
+    -moz-border-radius: 0 0 6px 0;
+    -webkit-border-radius: 0 0 6px 0;
+    border-radius: 0 0 6px 0;
+}
+
+.zebra tfoot td:only-child{
+    -moz-border-radius: 0 0 6px 6px;
+    -webkit-border-radius: 0 0 6px 6px
+    border-radius: 0 0 6px 6px
+}
+  
+</style>
+<style type="text/css">
+<!--
+fieldset.search {
+    padding: 0px;
+    border: none;
+    width: 232px;
+    background:#e0e0e0;
+}
+ 
+fieldset.search:hover {
+    background: #a8a8a8;
+}
+.search input, .search button {
+    border: none;
+    float: left;
+}
+.search input.box {
+    height: 28px;
+    width: 200;
+    margin-right: 0px;
+    padding-right: 0px;
+    background: #e0e0e0;
+    margin: 1px;
+}
+.search input.box:focus {
+    background: #e8e8e8 ;
+    outline: none;
+}
+.search button.btn {
+    border: none;
+    width: 28px;
+    height: 28px;
+    margin: 0px auto;
+    margin: 1px;
+    background: url(http://sandbox.runjs.cn/uploads/rs/339/livk7pl5/search_blue.png) no-repeat top right;
+}
+.search button.btn:hover {
+    background: url(http://sandbox.runjs.cn/uploads/rs/339/livk7pl5/search_black.png) no-repeat bottom right;
+}
+ 
+/* 文章样式 */
+.article {
+ 
+}
+-->
+</style>
+</head>
+
+<body>
+<div>
+<form action="/foodindex/" method="POST">
+{% csrf_token %}
+    <fieldset class="search">
+         <input type="text" class="box" name="keywords" id="keywords" class="inputText" placeholder="key words" x-webkit-speech>
+         <button class="btn" title="SEARCH"> </button>
+    </fieldset>
+</form>
+</div>
+
+<h2>Cake</h2>
+<table class="bordered">
+    <thead>
+    <tr>
+        <th>#</th>        
+        <th>本地链接</th>
+		<th>维基链接</th>
+        <th>Food</th>
+    </tr>
+    </thead>
+	{% for it in cakeList %}
+	<tr>
+        <td>{{it}}</td>        
+        <td><a href="/goto?A=List_of_cakes&B={{it}}">local</a></td>
+		<td><a href="https://en.wikipedia.org/wiki/{{cakeWiki|get_item:it}}">wiki</a></td>
+        <td>{{ cakeFile|get_item:it}}</td>
+    </tr>        
+	{% empty %}
+	<tr>
+        <td></td>        
+        <td>sorry, there is no results in cake</td>
+        <td></td>
+    </tr>        
+    {% endfor %}
+    
+</table>
+
+<br><br>
+
+<h2>Rice</h2>
+<table class="zebra">
+    <thead>
+    <tr>
+        <th>#</th>        
+        <th>本地链接</th>
+		<th>维基链接</th>
+        <th>Food</th>
+
+    </tr>
+    </thead>
+    <tfoot>
+    <tr>
+        <td>&nbsp;</td>        
+        <td><a href="/foodindex?page={{lastpage}}&index={{index}}">上一页</a></td>
+        <td><a href="/foodindex?page={{nextpage}}&index={{index}}">下一页</a></td>
+    </tr>
+    </tfoot>    
+	{% for it in chickenList %}
+    <tr>
+        <td>{{it}}</td>        
+        <td><a href="/goto?A=List_of_rice_dishes&B={{it}}">local</a></td>
+		<td><a href="https://en.wikipedia.org/wiki/{{riceWiki|get_item:it}}">wiki</a></td>
+        <td>{{ riceFile|get_item:it }}</td>
+    </tr>        
+	{% empty %}
+	<tr>
+        <td></td>        
+        <td>sorry, there is no results in rice</td>
+        <td></td>
+    </tr>        
+    {% endfor %}
+</table>
+
+<br>
+    
+
+</body>
+</html>
